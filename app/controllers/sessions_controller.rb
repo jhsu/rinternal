@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
   def create
-    User.find_or_create_by_provider_and_uid
-    raise request.env["omniauth.auth"].to_yaml
+    uid = request.env["omniaut.aut"]["uid"]
+    @user = User.find_or_create_by_provider_and_uid(params[:provider], uid)
   end
 end
