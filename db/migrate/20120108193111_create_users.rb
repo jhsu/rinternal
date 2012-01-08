@@ -4,8 +4,10 @@ class CreateUsers < ActiveRecord::Migration
       t.string :provider
       t.string :username
       t.string :email
+      t.string :uid
 
       t.timestamps
     end
+    add_index :users, [:provider,:uid]
   end
 end
