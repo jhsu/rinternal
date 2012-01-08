@@ -8,7 +8,8 @@ gem 'rails', '3.1.3'
 gem 'pg'
 gem 'omniauth', '~> 1.0.1'
 gem 'omniauth-github'
-
+gem 'draper', '~> 0.9.5'
+gem 'simple_form', '~> 1.5.2'
 
 # Gems used only for assets and not required
 # in production environments by default.

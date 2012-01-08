@@ -11,6 +11,28 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 0) do
+ActiveRecord::Schema.define(:version => 20120108172039) do
+
+  create_table "discussion", :force => true do |t|
+    t.string   "text",       :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "links", :force => true do |t|
+    t.string   "url",        :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "submissions", :force => true do |t|
+    t.string   "title",        :null => false
+    t.integer  "content_id"
+    t.string   "content_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "submissions", ["content_id", "content_type"], :name => "index_submissions_on_content_id_and_content_type"
 
 end
