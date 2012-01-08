@@ -1,12 +1,12 @@
-require 'digest/md6'
+require 'digest/md5'
 
 class UserDecorator < ApplicationDecorator
   decorates :user
   allows :username
 
   def avatar
-    hash = user.
-    h.image_tag "http://www.gravatar.com/avatar/#{}"
+    hash = Digest::MD5.hexdigest(user.email)
+    h.image_tag "http://www.gravatar.com/avatar/#{hash}"
   end
 
   # Accessing Helpers
