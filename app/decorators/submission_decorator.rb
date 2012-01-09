@@ -9,6 +9,10 @@ class SubmissionDecorator < ApplicationDecorator
     "submission_#{submission.id}"
   end
 
+  def type
+    submission.content_type.to_s.downcase
+  end
+
   def types
     %w(link submission)
   end
