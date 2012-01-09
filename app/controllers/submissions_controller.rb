@@ -4,8 +4,7 @@ class SubmissionsController < ApplicationController
   end
 
   def show
-    @submission = SubmissionDecorator.new(Submission.find(params[:id]))
-    render :text => @submission.title
+    @submission = Submission.includes(:content).find(params[:id])
   end
 
   def create

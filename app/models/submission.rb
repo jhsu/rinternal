@@ -3,11 +3,15 @@ class Submission < ActiveRecord::Base
 
   def self.create_type(type, attributes={})
     if klass = %w(link discussion).detect {|klass| klass == type }
-      klass = klass.constantize
+      klass = klass.camelize.constantize
       instance = new(title: attributes.delete(:title))
       if instance.valid?
-        instance.content = klass.create(attributes)
-        instance.save
+        content = klass.new
+        content.sets = attributes
+        if content.save
+          instance.content = content
+          instance.save
+        end
         instance
       end
     end

@@ -1,6 +1,10 @@
 class SubmissionDecorator < ApplicationDecorator
   decorates :submission
 
+  def content
+    submission.content
+  end
+
   def title
     h.content_tag :h2, "#{submission.title}", class: 'submission_title', id: dom_id
   end
@@ -14,7 +18,31 @@ class SubmissionDecorator < ApplicationDecorator
   end
 
   def types
-    %w(link submission)
+    %w(link discussion)
+  end
+
+  def url
+    type == "link" ? content.url : nil
+  end
+
+  def text
+    type == "discussion" ? content.text : nil
+  end
+
+  def link
+    h.link_to url, url
+  end
+
+  def full_text
+    h.content_tag(:div, text)
+  end
+
+  def body
+    if type == 'link'
+      link
+    elsif type == 'discussion'
+      full_text
+    end
   end
 
   # Accessing Helpers
