@@ -1,9 +1,22 @@
 class SessionsController < ApplicationController
   def create
-    uid = request.env["omniauth.auth"]["uid"].to_s
-    @user = User.find_or_create_by_provider_and_uid(params[:provider], uid)
+    omniauth = request.env["omniauth.auth"]
+    uid = omniauth["uid"].to_s
+    @user = User.find_or_create_by_provider_and_uid(params[:provider], uid,
+      email: omniauth["email"])
     session[:user_id] = @user.id
 
-    redirect_to root_url
+    if @user.username
+      redirect_to root_url
+    else
+      redirect_to set_username_path
+    end
   end
+
+  def set_username
+    unless current_user
+      redirect_to root_url
+    end
+  end
+
 end
