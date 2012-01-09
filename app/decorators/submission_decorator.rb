@@ -9,6 +9,10 @@ class SubmissionDecorator < ApplicationDecorator
     "submission_#{submission_id}"
   end
 
+  def types
+    %(link submission)
+  end
+
   # Accessing Helpers
   #   You can access any helper via a proxy
   #
