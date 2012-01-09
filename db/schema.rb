@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120108193111) do
+ActiveRecord::Schema.define(:version => 20120109225705) do
 
   create_table "discussion", :force => true do |t|
     t.string   "text",       :null => false

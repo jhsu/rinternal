@@ -29,4 +29,13 @@ class SessionsController < ApplicationController
     end
   end
 
+  def force
+    redirect_to root_url if Rails.env.production?
+
+    if user = User.find_by_username(params[:username])
+      session[:user_id] = user.id
+    end
+    redirect_to root_url
+  end
+
 end
