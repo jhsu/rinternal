@@ -13,6 +13,10 @@ class SessionsController < ApplicationController
     end
   end
 
+  def failure
+    raise request.env["omniauth.auth"].to_yaml
+  end
+
   def set_username
     unless current_user
       redirect_to root_url

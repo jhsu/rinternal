@@ -5,4 +5,5 @@ Rinternal::Application.routes.draw do
 
   match '/account/username', to: 'sessions#set_username'
   match '/auth/:provider/callback', to: 'sessions#create'
+  match '/auth/failure', to: 'sessions#failure'
 end
