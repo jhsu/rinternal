@@ -10,7 +10,7 @@ class SubmissionDecorator < ApplicationDecorator
   end
 
   def types
-    %(link submission)
+    %w(link submission)
   end
 
   # Accessing Helpers
