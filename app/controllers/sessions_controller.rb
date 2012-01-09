@@ -13,6 +13,10 @@ class SessionsController < ApplicationController
     end
   end
 
+  def destroy
+    session[:user_id] = nil
+  end
+
   def failure
     raise request.env["omniauth.auth"].to_yaml
   end
