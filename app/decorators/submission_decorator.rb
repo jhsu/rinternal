@@ -6,7 +6,7 @@ class SubmissionDecorator < ApplicationDecorator
   end
 
   def dom_id
-    "submission_#{submission_id}"
+    "submission_#{submission.id}"
   end
 
   def types
