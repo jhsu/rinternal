@@ -1,6 +1,10 @@
 class SubmissionDecorator < ApplicationDecorator
   decorates :submission
 
+  def added_date
+    h.content_tag(:div, h.l(submission.created_at, :format => :short) )
+  end
+
   def content
     submission.content
   end
