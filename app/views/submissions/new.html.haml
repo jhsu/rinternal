@@ -1,5 +1,5 @@
 = simple_form_for @submission do |f|
   = f.input :title
-  = f.input :type
+  = f.input :type, collection: @submission.types
 
   = f.button :submit
