@@ -18,7 +18,7 @@ class SessionsController < ApplicationController
   end
 
   def set_username
-    unless current_user
+    unless @user = current_user
       redirect_to root_url
     end
   end
