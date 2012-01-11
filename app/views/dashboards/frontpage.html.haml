@@ -4,6 +4,6 @@
   = link_to "new submission", new_submission_path
   = link_to "Logout", logout_path
 - else
-  = link_to "Login", login_path(:provider => "github")
+  = link_to "Login", "/auth/github"
 
 = render partial: "submissions/submission", collection: @submissions

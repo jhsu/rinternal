@@ -7,7 +7,7 @@ Rinternal::Application.routes.draw do
 
   match '/account/username', to: 'sessions#set_username', as: 'set_username'
   match '/auth/force/:username', to: 'sessions#force'
-  match '/auth/:provider/callback', to: 'sessions#create', as: 'login'
+  match '/auth/:provider/callback', to: 'sessions#create'
   match '/auth/failure', to: 'sessions#failure'
   match '/logout', to: 'sessions#destroy', as: 'logout'
 end
