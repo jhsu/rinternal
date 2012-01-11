@@ -13,6 +13,10 @@ class SubmissionDecorator < ApplicationDecorator
     h.content_tag :h2, "#{submission.title}", class: 'submission_title', id: dom_id
   end
 
+  def title_link
+    h.link_to title, h.submission_path(submission)
+  end
+
   def dom_id
     "submission_#{submission.id}"
   end
@@ -37,8 +41,16 @@ class SubmissionDecorator < ApplicationDecorator
     h.link_to url, url
   end
 
+  def short_text(length=140)
+    h.content_tag(:div, h.truncate(text, :length => length))
+  end
+
   def full_text
     h.content_tag(:div, text)
+  end
+
+  def short_body(length=140)
+    h.content_tag(:div, h.truncate(text, :length => length))
   end
 
   def body

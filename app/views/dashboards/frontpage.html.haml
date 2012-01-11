@@ -6,4 +6,4 @@
 - else
   = link_to "Login", "/auth/github"
 
-= render partial: "submissions/submission", collection: @submissions
+= render partial: "submissions/submission_short", collection: @submissions, as: "submission"
