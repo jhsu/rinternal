@@ -2,7 +2,7 @@
   = f.input :title
   = f.input :type, collection: @submission.types, as: :radio
 
-  = f.input :url
+  = f.input :url, as: :string
   = f.input :text, as: :text
 
   = f.button :submit
