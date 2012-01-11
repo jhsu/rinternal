@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120109225705) do
+ActiveRecord::Schema.define(:version => 20120111020638) do
 
   create_table "discussion", :force => true do |t|
     t.string   "text",       :null => false
@@ -31,9 +31,11 @@ ActiveRecord::Schema.define(:version => 20120109225705) do
     t.string   "content_type"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   add_index "submissions", ["content_id", "content_type"], :name => "index_submissions_on_content_id_and_content_type"
+  add_index "submissions", ["user_id"], :name => "index_submissions_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "provider"

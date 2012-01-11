@@ -8,4 +8,13 @@ class ApplicationController < ActionController::Base
         nil
       end
   end
+
+  private
+
+  def require_user
+    unless current_user
+      redirect_to root_url
+    end
+  end
+
 end

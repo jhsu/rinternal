@@ -4,9 +4,11 @@ class UserDecorator < ApplicationDecorator
   decorates :user
   allows :username
 
-  def avatar
-    hash = Digest::MD5.hexdigest(user.email)
-    h.image_tag "http://www.gravatar.com/avatar/#{hash}"
+  def avatar(size=65)
+    if user.email
+      hash = Digest::MD5.hexdigest(user.email)
+      h.image_tag "http://www.gravatar.com/avatar/#{hash}?size=65"
+    end
   end
 
   # Accessing Helpers
