@@ -1,6 +1,6 @@
-= render "users/brief"
 
 - if current_user
+  = render "users/brief"
   = link_to 'new submission', new_submission_path
 
 = render partial: "submissions/submission", collection: @submissions
