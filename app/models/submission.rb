@@ -2,7 +2,12 @@ class Submission < ActiveRecord::Base
   belongs_to :content, :polymorphic => true
   belongs_to :user
 
+  has_many :taggings, :dependent => :destroy
+  has_many :tags, :through => :taggings
+
   scope :of, lambda {|user| where("submissions.user_id = ?", user.id) }
+
+  validates_presence_of :title
 
   def self.create_type(type, attributes={})
     if klass = %w(link discussion).detect {|klass| klass == type }

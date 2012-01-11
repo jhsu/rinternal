@@ -11,10 +11,10 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120111162905) do
+ActiveRecord::Schema.define(:version => 20120111195912) do
 
   create_table "discussions", :force => true do |t|
-    t.string   "text",       :null => false
+    t.text     "text",       :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -36,6 +36,22 @@ ActiveRecord::Schema.define(:version => 20120111162905) do
 
   add_index "submissions", ["content_id", "content_type"], :name => "index_submissions_on_content_id_and_content_type"
   add_index "submissions", ["user_id"], :name => "index_submissions_on_user_id"
+
+  create_table "taggings", :id => false, :force => true do |t|
+    t.integer  "tag_id",        :null => false
+    t.integer  "submission_id", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "taggings", ["tag_id", "submission_id"], :name => "index_taggings_on_tag_id_and_submission_id"
+
+  create_table "tags", :force => true do |t|
+    t.string   "name",       :null => false
+    t.integer  "tagging_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "provider"
