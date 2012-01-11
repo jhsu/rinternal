@@ -1,5 +1,6 @@
 class SubmissionsController < ApplicationController
   before_filter :require_user
+  before_filter :can_manage_submissions
 
   def new
     @submission = SubmissionDecorator.new(Submission.new)
@@ -26,5 +27,11 @@ class SubmissionsController < ApplicationController
     else
       redirect_to submission_path(submission)
     end
+  end
+
+  protected
+
+  def can_manage_submissions
+    redirect_to root_url unless can?(:manage, Submission)
   end
 end

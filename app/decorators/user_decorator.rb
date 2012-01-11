@@ -4,6 +4,8 @@ class UserDecorator < ApplicationDecorator
   decorates :user
   allows :username
 
+  include Draper::CanCan
+
   def avatar(size=65)
     if user.email
       hash = Digest::MD5.hexdigest(user.email)

@@ -1,6 +1,9 @@
 
 - if current_user
   = render "users/brief"
-  = link_to 'new submission', new_submission_path
+  = link_to "new submission", new_submission_path
+  = link_to "Logout", logout_path
+- else
+  = link_to "Login", login_path(:provider => "github")
 
 = render partial: "submissions/submission", collection: @submissions
