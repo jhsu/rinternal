@@ -5,9 +5,10 @@ module ApplicationHelper
   end
 
   def current_user
-    @current_user ||= if session[:user_id]
-        User.find(session[:user_id])
+    @current_user ||= if session[:user_id] && user = User.find(session[:user_id])
+        user
       else
+        session[:user_id] = nil
         nil
       end
   end
